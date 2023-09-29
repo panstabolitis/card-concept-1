@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Site</title>
+        <style>
+
+            *, *::before, *::after {
+                box-sizing: border-box;
+                padding: 0;
+                margin: 0;
+            }
+
+            html,
+            body {
+                font-family: sans-serif;
+                -webkit-font-smoothing: antialiased;
+
+                position: relative;
+                overflow: hidden;
+
+                color: white;
+                background: linear-gradient(45deg, black 50%, rgb(200, 0, 0), rgb(255, 200, 0));
+
+                display: grid;
+                place-items: center;
+
+                height: 100vh;
+                height: 100svh;
+                width: 100vw;
+            }
+
+            div {
+                display: block;
+            }
+
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: contain;
+                border-radius: inherit;
+            }
+
+            .card {
+                position: relative;
+                width: 750px;
+                height: 450px;
+
+                display: grid;
+                grid-template-columns: repeat(8, 1fr);
+                grid-template-rows: repeat(8, 1fr);
+                background: linear-gradient(217deg, rgba(200, 0, 0, .8), rgba(200, 0, 0, 0) 70.71%),
+                            linear-gradient(127deg, rgba(0, 0, 50, 0.8), rgba(0, 0, 50 ,0) 70.71%),
+                            linear-gradient(336deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0) 70.71%);
+                border-radius: 1rem;
+                box-shadow: inset -2px 2px 2px #ffffff10;
+            }
+
+            .card-header {
+                grid-column: 1 / 9;
+                grid-row: 1 / 2;
+
+                display: flex;
+                padding: 1rem;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .card-header-icon-container {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .card-header-icon {
+                width: 32px;
+                height: 32px;
+                flex: 0 0 32px;
+                background-color: #ffffff50;
+                backdrop-filter: blur(10px);
+                display: grid;
+                place-items: center;
+            }
+
+            .card-header-heading {
+                font-size: 16px;
+                font-weight: 400;
+            }
+
+            .card-header-btn-container {
+                display: flex;
+                gap: 1rem;
+                align-items: center;
+            }
+
+            .card-header-button {
+                border: thin solid #fff;
+                border-radius: 1rem;
+                padding: 0.5rem 1rem;
+                font-size: 16px;
+                color: #fff;
+                background-color: transparent;
+                cursor: pointer;
+            }
+
+            .card-header-exit {
+                border: thin solid #fff;
+                border-radius: 50%;
+                font-size: 16px;
+                color: #fff;
+                background-color: transparent;
+                cursor: pointer;
+
+                display: grid;
+                place-items: center;
+
+                height: 36.5px;
+                width: 36.5px;
+                flex: 0 0 36.5px;
+            }
+
+            .card-header-nav {
+                grid-column: 1 / 9;
+                grid-row: 2 / 3;
+
+                display: flex;
+                overflow: hidden;
+            }
+
+            .card-header-nav-item-button {
+                height: 100%;
+                padding: 1rem;
+                display: grid;
+                place-items: center;
+
+                position: relative;
+                border: none;
+                background-color: transparent;
+            }
+
+            .card-header-nav-button-text {
+                font-size: 16px;
+                color: #fff;
+                position: relative;
+                cursor: pointer;
+            }
+
+            .card-header-nav-button-text-selected {
+                font-size: 16px;
+                color: #fff;
+                position: relative;
+                cursor: pointer;
+            }
+
+            .card-header-nav-button-text-selected::before {
+                content: "";
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                transform: translate(0%, 175%);
+                background-color: #ffffff25;
+                backdrop-filter: blur(10px);
+                border-radius: 0.25rem;
+            }
+
+            .analytics-container {
+                grid-column: 1 / 9;
+                grid-row: 3 / 8;
+
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .analytics-info-container {
+                grid-column: 1 / 2;
+                background-color: #ffffff25;
+                backdrop-filter: blur(10px);
+                padding: 1rem;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                /* border-top-right-radius: 1rem; */
+                /* border-bottom-right-radius: 1rem; */
+            }
+
+            .analytics-info-heading {
+                font-size: 56px;
+                font-weight: 400;
+            }
+
+            .analytics-info-subheading {
+                font-size: 18px;
+                font-weight: 300;
+                margin-top: -4px;
+            }
+
+            .analytics-p {
+                font-size: 16px;
+                font-weight: 300;
+                word-wrap: break-word;
+            }
+
+            .analytics-chart-container {
+                grid-column: 2 / 4;
+
+                display: grid;
+                grid-template-columns: repeat(7, 1fr);
+                grid-template-rows: repeat(8, 1fr);
+            }
+
+            .analytics-chart-time {
+                grid-column: 1 / 8;
+                grid-row: 8 / 9;
+                display: grid;
+                grid-template-columns: repeat(7, 1fr);
+            }
+
+            .analytics-chart-time-text {
+                display: grid;
+                place-items: center;
+                font-size: 12px;
+                color: #757575;
+            }
+
+            .bar-column-container {
+                grid-column: 1 / 8;
+                grid-row: 1 / 8;
+                display: grid;
+                grid-template-columns: repeat(7, 1fr);
+            }
+
+            .bar-column {
+                justify-self: center;
+                align-self: flex-end;
+                width: 50%;
+                border-radius: 0.5rem;
+                background: linear-gradient(#ffffff75, transparent);
+                backdrop-filter: blur(10px);
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <div class="card-header">
+                <div class="card-header-icon-container">
+                    <div class="card-header-icon"></div>
+                    <span class="card-header-heading">Icon</span>
+                </div>
+                <div class="card-header-btn-container">
+                    <button class="card-header-button">This Week</button>
+                    <button class="card-header-exit"><span>X</span></button>
+                </div>
+            </div>
+            <div class="card-header-nav">
+                <button class="card-header-nav-item-button">
+                    <span class="card-header-nav-button-text-selected">Item 1</span>
+                </button>
+                <button class="card-header-nav-item-button">
+                    <span class="card-header-nav-button-text">Item 2</span>
+                </button>
+            </div>
+            <div class="analytics-container">
+                <div class="analytics-info-container">
+                    <div class="analytics-info-heading-container">
+                        <h1 class="analytics-info-heading">87.5%</h1>
+                        <h2 class="analytics-info-subheading">Increase</h2>
+                    </div>
+                    <span class="analytics-p">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis magnam corrupti.</span>
+                </div>
+                <div class="analytics-chart-container">
+                    <div class="bar-column-container">
+                        <div class="bar-column" style="height: 50%;"></div>
+                        <div class="bar-column" style="height: 24%;"></div>
+                        <div class="bar-column" style="height: 72%;"></div>
+                        <div class="bar-column" style="height: 78%;"></div>
+                        <div class="bar-column" style="height: 64%;"></div>
+                        <div class="bar-column" style="height: 47%;"></div>
+                        <div class="bar-column" style="height: 39%;"></div>
+                    </div>
+                    <div class="analytics-chart-time">
+                        <span class="analytics-chart-time-text">Mon</span>
+                        <span class="analytics-chart-time-text">Tue</span>
+                        <span class="analytics-chart-time-text">Wed</span>
+                        <span class="analytics-chart-time-text">Thu</span>
+                        <span class="analytics-chart-time-text">Fri</span>
+                        <span class="analytics-chart-time-text">Sat</span>
+                        <span class="analytics-chart-time-text">Sun</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
